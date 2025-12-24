@@ -11,7 +11,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#0D1014] overflow-hidden">
+        <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#121212] overflow-hidden">
             {/* Background Map - Stylized SVG */}
             <motion.div
                 className="absolute inset-0 opacity-30 pointer-events-none"
@@ -29,10 +29,10 @@ export default function Hero() {
                             </feMerge>
                         </filter>
                     </defs>
-                    {/* The River Scheldt */}
-                    <path d="M50,1000 C50,1000 0,600 150,400 C300,200 100,0 100,0" stroke="#101419" strokeWidth="150" fill="none" opacity="0.5" />
-                    {/* City Blocks Abstract */}
-                    <g id="city-blocks" fill="#1A1F26" stroke="#2C3540" strokeWidth="1">
+                    {/* The River Scheldt - Lighter and more visible */}
+                    <path d="M50,1000 C50,1000 0,600 150,400 C300,200 100,0 100,0" stroke="#525252" strokeWidth="150" fill="none" opacity="0.2" />
+                    {/* City Blocks Abstract - Lighter Skeleton */}
+                    <g id="city-blocks" fill="none" stroke="#A3A3A3" strokeWidth="1" opacity="0.4">
                         <rect x="250" y="100" width="100" height="150" rx="2" />
                         <rect x="400" y="120" width="150" height="100" rx="2" />
                         <rect x="550" y="300" width="150" height="150" rx="2" />
