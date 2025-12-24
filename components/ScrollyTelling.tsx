@@ -109,13 +109,13 @@ export default function ScrollyTelling() {
                                     src={stop.bgImage}
                                     alt={stop.location}
                                     fill
-                                    className="object-cover opacity-80 md:opacity-60" // Brighter on mobile
+                                    className="object-cover opacity-40 md:opacity-60" // Subtle on mobile
                                     priority={index <= 1} // Prioritize first images
                                 />
                                 {/* Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D1014] via-transparent to-transparent" />
-                                {/* Mobile extra darken layer - REMOVED for visibility */}
-                                {/* <div className="absolute inset-0 bg-black/40 md:bg-transparent" /> */}
+                                {/* Mobile extra darken layer for readability */}
+                                <div className="absolute inset-0 bg-black/50 md:bg-transparent" />
                             </div>
                         </motion.div>
                     ))}
