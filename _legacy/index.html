@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antwerp: The Drama of the Flesh</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Sorts+Mill+Goudy:ital@0;1&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400&display=swap"
+        rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        deepVelvet: '#0D1014',
+                        charcoal: '#1A1F26',
+                        gildedAge: '#C5A065',
+                        bloodRed: '#6d0f0f',
+                        paper: '#E6E2D6',
+                        leadWhite: '#F0F0F0'
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        print: ['"Sorts Mill Goudy"', 'serif'],
+                        display: ['"Cinzel"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+</head>
+
+<body
+    class="bg-deepVelvet text-paper font-print antialiased overflow-x-hidden selection:bg-bloodRed selection:text-white">
+
+    <!-- Texture Overlay -->
+    <div class="fixed inset-0 pointer-events-none opacity-[0.03] z-[100]"
+        style="background-image: url('https://www.transparenttextures.com/patterns/aged-paper.png'); mix-blend-mode: overlay;">
+    </div>
+
+    <!-- Mobile Progress Bar -->
+    <div class="fixed top-0 left-0 w-full h-1 bg-white/5 z-50 md:hidden">
+        <div id="progress-bar" class="h-full bg-gildedAge w-0 shadow-[0_0_10px_#C5A065]"></div>
+    </div>
+
+    <!-- Hero Section (Map - Full Screen First) -->
+    <section id="hero"
+        class="relative h-screen w-full flex flex-col items-center justify-center text-center p-6 bg-deepVelvet z-20">
+        <div id="hero-map-container" class="absolute inset-0 z-0 opacity-40">
+            <!-- SVG Map injected by JS -->
+        </div>
+        <div class="relative z-10">
+            <h1 class="font-display text-4xl md:text-7xl font-bold mb-4 tracking-widest text-leadWhite drop-shadow-2xl">
+                ANTWERP</h1>
+            <p class="font-serif italic text-2xl md:text-3xl text-bloodRed mb-2">The Drama of the Flesh</p>
+            <p class="font-print text-sm md:text-base text-gildedAge/60 tracking-[0.2em] uppercase mb-12">A Baroque
+                Pilgrimage with Serge</p>
+
+            <button id="start-btn"
+                class="px-6 py-2 border border-gildedAge/30 text-gildedAge font-display text-sm tracking-widest uppercase hover:bg-gildedAge/10 transition-colors duration-500">
+                Begin the Descent
+            </button>
+        </div>
+    </section>
+
+    <!-- Split Screen Layout Container -->
+    <div class="flex flex-col md:flex-row w-full relative">
+
+        <!-- Left Column: Scroll Content (50%) -->
+        <div class="w-full md:w-1/2 relative z-10 bg-deepVelvet border-r border-white/5">
+
+            <!-- Stop 1: The Station -->
+            <section id="stop-1" class="min-h-screen p-8 md:p-20 flex flex-col justify-center narrative-block"
+                data-bg="bg-1">
+                <span class="text-gildedAge font-display text-xs mb-4 block">01. THE PROLOGUE</span>
+                <p class="text-2xl font-serif text-leadWhite mb-8">"Welcome to the waiting room of the north..."</p>
+                <div class="my-8">
+                    <img src="public/images/central.jpg" alt="Serge in Station"
+                        class="w-full shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <p class="text-lg text-paper/80 leading-relaxed">
+                    "We are not here for waffles. We are here to see flesh turned into paint."
+                </p>
+            </section>
+
+            <!-- Stop 2: Rubenshuis -->
+            <section id="stop-2" class="min-h-screen p-8 md:p-20 flex flex-col justify-center narrative-block"
+                data-bg="bg-2">
+                <span class="text-gildedAge font-display text-xs mb-4 block">02. THE PRIVATE MAN</span>
+                <p class="text-2xl font-serif text-leadWhite mb-8">"Peter Paul Rubens was not a starving artist..."</p>
+                <div class="my-8">
+                    <img src="public/images/1.jpg" alt="Serge in Garden"
+                        class="w-full shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <p class="text-lg text-paper/80 leading-relaxed">
+                    "Look at the portico. It is pure Roman triumphal arch..."
+                </p>
+            </section>
+
+            <!-- Stop 3: Cathedral & Deep Dive -->
+            <section id="stop-3" class="min-h-[150vh] p-8 md:p-20 flex flex-col justify-center narrative-block"
+                data-bg="bg-3">
+                <span class="text-bloodRed font-display text-xs mb-4 block">03. THE DEEP DIVE</span>
+                <p class="text-2xl font-serif text-leadWhite mb-8">"This space was built to intimidate you..."</p>
+                <div class="my-8">
+                    <img src="public/images/2.jpg" alt="Serge in Nave"
+                        class="w-full shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+
+                <div class="mt-12 pl-6 border-l-2 border-gildedAge">
+                    <p class="text-xl font-serif text-gildedAge mb-4">The Muscle</p>
+                    <p class="text-lg text-paper/80 mb-6">"Look at the bicep of the executioner. Rubens is obsessed with
+                        strain..."</p>
+                    <img src="public/images/3a.jpg" alt="Serge looking intensely" class="w-2/3 shadow-xl mb-8">
+
+                    <p class="text-xl font-serif text-gildedAge mb-4">The Face</p>
+                    <p class="text-lg text-paper/80 mb-6">"Christ is not looking at his tormentors. He is looking up..."
+                    </p>
+                    <img src="public/images/3b.jpg" alt="Serge angle" class="w-2/3 shadow-xl">
+                </div>
+            </section>
+
+            <!-- Stop 4: The Alley -->
+            <section id="stop-4" class="min-h-screen p-8 md:p-20 flex flex-col justify-center narrative-block"
+                data-bg="bg-4">
+                <span class="text-gildedAge font-display text-xs mb-4 block">04. THE GUT</span>
+                <p class="text-2xl font-serif text-leadWhite mb-8">"Step out of the cathedral and into the gut of the
+                    city..."</p>
+                <div class="my-8">
+                    <img src="public/images/4.jpg" alt="Serge in Alley"
+                        class="w-full shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <p class="text-lg text-paper/80 leading-relaxed">
+                    "You cannot paint the light if you haven't seen this darkness."
+                </p>
+            </section>
+
+            <!-- Stop 5: Finale (St. Paul's) -->
+            <section id="stop-5" class="min-h-screen p-8 md:p-20 flex flex-col justify-center narrative-block"
+                data-bg="bg-5">
+                <span class="text-gildedAge font-display text-xs mb-4 block">05. THE INSIDERS</span>
+                <p class="text-2xl font-serif text-leadWhite mb-8">"The Cathedral is for the world; St. Paul’s is for
+                    the insiders..."</p>
+                <div class="my-8">
+                    <img src="public/images/5.jpg" alt="Serge at St Pauls"
+                        class="w-full shadow-2xl border border-white/10 grayscale hover:grayscale-0 transition-all duration-700">
+                </div>
+                <p class="text-lg text-paper/80 leading-relaxed">
+                    "It is a rap battle in oil paint. We are done walking. Now, you look."
+                </p>
+
+                <div class="mt-16 text-center">
+                    <a href="#"
+                        class="inline-block px-8 py-3 bg-bloodRed text-white font-display tracking-widest text-sm hover:bg-white hover:text-deepVelvet transition-colors duration-300">BOOK
+                        THE TOUR</a>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- Right Column: Sticky Images (50%) (Hidden on Mobile) -->
+        <div class="hidden md:block w-1/2 h-screen sticky top-0 right-0 overflow-hidden bg-black z-0">
+            <!-- Placeholder Backgrounds (Unsplash) -->
+
+            <!-- BG 1: Station -->
+            <div id="bg-1" class="bg-layer absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1534960680480-2dca18b10dc6?q=80&w=2574&auto=format&fit=crop"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-deepVelvet/30"></div>
+            </div>
+
+            <!-- BG 2: Rubenshuis Garden -->
+            <div id="bg-2" class="bg-layer absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1587313018281-b55d9d73d629?q=80&w=2670&auto=format&fit=crop"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-deepVelvet/40"></div>
+            </div>
+
+            <!-- BG 3: Elevation of Cross -->
+            <div id="bg-3" class="bg-layer absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Peter_Paul_Rubens_-_The_Elevation_of_the_Cross_-_Google_Art_Project.jpg/1280px-Peter_Paul_Rubens_-_The_Elevation_of_the_Cross_-_Google_Art_Project.jpg"
+                    class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-deepVelvet via-transparent to-transparent"></div>
+            </div>
+
+            <!-- BG 4: Alley -->
+            <div id="bg-4" class="bg-layer absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1549480928-1f19b0d1264c?q=80&w=2574&auto=format&fit=crop"
+                    class="w-full h-full object-cover grayscale">
+                <div class="absolute inset-0 bg-deepVelvet/60 mix-blend-multiply"></div>
+            </div>
+
+            <!-- BG 5: St Pauls -->
+            <div id="bg-5" class="bg-layer absolute inset-0 opacity-0 transition-opacity duration-1000">
+                <img src="https://images.unsplash.com/photo-1596708681561-1c390632002f?q=80&w=2600&auto=format&fit=crop"
+                    class="w-full h-full object-cover sepia">
+                <div class="absolute inset-0 bg-deepVelvet/20"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="svg-map.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
