@@ -11,7 +11,7 @@ export default function Hero() {
     };
 
     return (
-        <section className="relative h-screen w-full flex flex-col items-center justify-center bg-[#121212] overflow-hidden">
+        <section className="relative z-20 h-screen w-full flex flex-col items-center justify-center bg-[#121212] overflow-hidden">
             {/* Background Map - Stylized SVG */}
             <motion.div
                 className="absolute inset-0 opacity-30 pointer-events-none"

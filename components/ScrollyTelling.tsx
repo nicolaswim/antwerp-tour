@@ -59,7 +59,7 @@ export default function ScrollyTelling() {
     const [activeStop, setActiveStop] = useState(0);
 
     return (
-        <div id="tour-start" className="relative w-full bg-[#0D1014] text-[#E6E2D6] font-serif">
+        <div id="tour-start" className="relative w-full text-[#E6E2D6] font-serif">
             <div className="flex flex-col md:flex-row">
 
                 {/* Left Column: Scrolling Content */}
@@ -109,13 +109,13 @@ export default function ScrollyTelling() {
                                     src={stop.bgImage}
                                     alt={stop.location}
                                     fill
-                                    className="object-cover opacity-40 md:opacity-60" // Darker on mobile for text readability
+                                    className="object-cover opacity-80 md:opacity-60" // Brighter on mobile
                                     priority={index <= 1} // Prioritize first images
                                 />
                                 {/* Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D1014] via-transparent to-transparent" />
-                                {/* Mobile extra darken layer */}
-                                <div className="absolute inset-0 bg-black/40 md:bg-transparent" />
+                                {/* Mobile extra darken layer - REMOVED for visibility */}
+                                {/* <div className="absolute inset-0 bg-black/40 md:bg-transparent" /> */}
                             </div>
                         </motion.div>
                     ))}
