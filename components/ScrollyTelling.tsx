@@ -91,8 +91,10 @@ export default function ScrollyTelling() {
                     </div>
                 </div>
 
-                {/* Right Column: Sticky Backgrounds (Hidden on Mobile) */}
-                <div className="hidden md:block w-1/2 h-screen sticky top-0 right-0 overflow-hidden bg-black/90">
+                {/* Right Column: Backgrounds */}
+                {/* Mobile: Fixed Full Screen Background (z-0) */}
+                {/* Desktop: Sticky Right Column (w-1/2) */}
+                <div className="fixed inset-0 z-0 md:relative md:w-1/2 md:h-screen md:sticky md:top-0 md:right-0 overflow-hidden bg-black">
                     {stops.map((stop, index) => (
                         <motion.div
                             key={stop.id}
@@ -107,10 +109,13 @@ export default function ScrollyTelling() {
                                     src={stop.bgImage}
                                     alt={stop.location}
                                     fill
-                                    className="object-cover opacity-60"
+                                    className="object-cover opacity-40 md:opacity-60" // Darker on mobile for text readability
+                                    priority={index <= 1} // Prioritize first images
                                 />
                                 {/* Overlay Gradient */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0D1014] via-transparent to-transparent" />
+                                {/* Mobile extra darken layer */}
+                                <div className="absolute inset-0 bg-black/40 md:bg-transparent" />
                             </div>
                         </motion.div>
                     ))}

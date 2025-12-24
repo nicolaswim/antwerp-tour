@@ -12,7 +12,7 @@ interface NarrativeCardProps {
 
 export default function NarrativeCard({ title, location, text1, image1, text2, image2 }: NarrativeCardProps) {
     return (
-        <div className="min-h-screen flex flex-col justify-center py-20 px-6 md:px-12 backdrop-blur-sm bg-[#0D1014]/50 border-r border-white/5">
+        <div className="min-h-screen flex flex-col justify-center py-20 px-6 md:px-12 backdrop-blur-none md:backdrop-blur-sm md:bg-[#0D1014]/50 border-r border-white/5 relative z-10">
 
             {/* Header */}
             <div className="flex items-center gap-2 mb-6">
@@ -34,7 +34,7 @@ export default function NarrativeCard({ title, location, text1, image1, text2, i
                     src={image1}
                     alt={title}
                     fill
-                    className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                    className="object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-1000"
                 />
             </div>
 
@@ -52,7 +52,7 @@ export default function NarrativeCard({ title, location, text1, image1, text2, i
                         src={image2}
                         alt="Detail"
                         fill
-                        className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000"
+                        className="object-cover grayscale-0 md:grayscale md:group-hover:grayscale-0 transition-all duration-1000"
                     />
                 </div>
             )}
